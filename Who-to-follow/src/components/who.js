@@ -1,12 +1,8 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
-import Users from './users';
-import Profile from './profile';
-import { UserProvider } from './context';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Users from "./users";
+import Profile from "./profile";
+import { UserProvider } from "./context";
 
 function WhoTofollow() {
   return (
