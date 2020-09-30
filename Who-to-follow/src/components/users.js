@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
-import User from './user';
-import { UserContext } from './context';
-import axios from 'axios';
+import React, { useEffect, useState, useContext } from "react";
+import User from "./user";
+import { UserContext } from "./context";
+import axios from "axios";
 
 function Users() {
   const [since, setSince, users, setUsers] = useContext(UserContext);
@@ -10,7 +10,7 @@ function Users() {
   const [update, setUpdate] = useState(false);
 
   const getUsers = () => {
-    if(loading) return;
+    if (loading) return;
     setLoading(true);
 
     axios
@@ -19,15 +19,15 @@ function Users() {
         const data = response.data;
         const prevUsers = users;
         const newUsers = data.filter((u) => {
-          for (var i = 0; i < prevUsers.length; i++){
-            if(prevUsers[i].id === u.id){
+          for (var i = 0; i < prevUsers.length; i++) {
+            if (prevUsers[i].id === u.id) {
               return false;
             }
           }
           return true;
         });
 
-        if(index === null){
+        if (index === null) {
           setUsers(newUsers.slice(0, 5));
         } else {
           let updateUsers = prevUsers;
@@ -37,22 +37,22 @@ function Users() {
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  }
+  };
 
   const refresh = () => {
     setIndex(null);
     setSince(since + 5);
     setUpdate(true);
-  } 
-  
+  };
+
   const replace = (i) => {
     setIndex(i);
     setSince(since + 5);
     setUpdate(true);
-  }
+  };
 
   useEffect(() => {
-    if(update || users.length === 0){
+    if (update || users.length === 0) {
       getUsers();
     }
   }, [since]);
@@ -60,18 +60,21 @@ function Users() {
   return (
     <div className="App">
       <div className="title">
-        <h1 className="d-inline">Who to follow</h1> 
-        <button className="d-inline refresh" onClick={refresh}>{loading ? 'Loading' : 'Refresh'}</button>
+        <h1 className="d-inline">Who to follow</h1>
+        <button className="d-inline refresh" onClick={refresh}>
+          {loading ? "Loading" : "Refresh"}
+        </button>
       </div>
       <div className="users">
         {users.map((user, i) => (
-          <User 
-            username={user.login} 
-            name={user.login} 
-            avatar={user.avatar_url} 
-            key={i} 
-            index={i} 
-            remove={replace} />
+          <User
+            username={user.login}
+            name={user.login}
+            avatar={user.avatar_url}
+            key={i}
+            index={i}
+            remove={replace}
+          />
         ))}
       </div>
     </div>
