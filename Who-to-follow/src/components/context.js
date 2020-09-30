@@ -1,8 +1,8 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext } from "react";
 
 export const UserContext = createContext();
 
-export const UserProvider = props => {
+export const UserProvider = (props) => {
   const randNumber = Math.floor(Math.random() * 100);
   const [since, setSince] = useState(randNumber);
   const [users, setUsers] = useState([]);
@@ -12,4 +12,4 @@ export const UserProvider = props => {
       {props.children}
     </UserContext.Provider>
   );
-}
+};
