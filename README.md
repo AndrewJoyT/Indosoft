@@ -1,11 +1,11 @@
 # This is Indosoft Frontend Test
 
-## How to run
+## How to run:
 ### git clone https://github.com/AndrewJoyT/Indosoft
-### cd Who-to-follow
+### cd NPU-Homepage
 ### start index.html
 ### and
-### cd NPU-Homepage
+### cd Who-to-follow
 ### npm install
 ### npm start
 
